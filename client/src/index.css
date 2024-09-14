@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Quicksand';
+  src:
+    url('../public/fonts/quicksand-variablefont_wght-webfont.woff')
+      format('woff'),
+    url('../public/fonts/quicksand-variablefont_wght-webfont.woff2')
+      format('woff2');
+  font-weight: 100 900; /* Specify the weight axis range */
+}
+
+@font-face {
+  font-family: 'Dela Gothic One';
+  src:
+    url('../public/fonts/delagothicone-regular-webfont.woff') format('woff'),
+    url('../public/fonts/delagothicone-regular-webfont.woff2') format('woff2');
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.slider-content {
+  animation: scroll 50s linear infinite;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  width: 200%; /* Extend the width to accommodate the duplicated items */
+}
+
+.slider-item {
+  flex: 0 0 auto;
+  padding: 10px;
+  display: flex;
+}
+
+.slider-container {
+  width: 105%;
+}
+
+@layer components {
+  .custom-shadow {
+    box-shadow: -4px 4px 0 rgb(2, 52, 45); /* Customize the shadow color and spread */
+  }
+}

@@ -1,0 +1,776 @@
+[
+  {
+    "id": "ORD011",
+    "items_ordered": {
+      "Coffee Drinks": [
+        {
+          "name": "White Coffee",
+          "size": "M",
+          "temperature": "Hot",
+          "price": 4.5
+        }
+      ],
+
+      "Blended Drinks": [
+        {
+          "name": "Caramel Frapp",
+          "size": "L",
+          "temperature": "Cold",
+          "price": 5.0
+        }
+      ]
+    },
+    "payment_method": "Cash",
+    "staff_member": "Bob",
+    "total_price": 9.5,
+    "date": "2024-03-05T14:00:00"
+  },
+  {
+    "id": "ORD012",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Latte", "size": "S", "temperature": "Hot", "price": 4.0 }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Mocha Frapp",
+          "size": "M",
+          "temperature": "Cold",
+          "price": 4.8
+        }
+      ]
+    },
+    "payment_method": "E-Wallet",
+    "staff_member": "Jeff",
+    "total_price": 8.8,
+    "date": "2024-02-20T10:25:00"
+  },
+  {
+    "id": "ORD013",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Americano", "size": "M", "temperature": "Hot", "price": 3.5 }
+      ],
+      "Blended Drinks": []
+    },
+    "payment_method": "Card",
+    "staff_member": "Bob",
+    "total_price": 3.5,
+    "date": "2024-02-05T09:35:00"
+  },
+  {
+    "id": "ORD014",
+    "items_ordered": {
+      "Coffee Drinks": [
+        {
+          "name": "Matcha Latte",
+          "size": "L",
+          "temperature": "Hot",
+          "price": 5.0
+        }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Normal Frapp",
+          "size": "S",
+          "temperature": "Cold",
+          "price": 4.0
+        }
+      ]
+    },
+    "payment_method": "Cash",
+    "staff_member": "Jeff",
+    "total_price": 9.0,
+    "date": "2024-01-20T15:40:00"
+  },
+  {
+    "id": "ORD015",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Espresso", "size": "S", "temperature": "Hot", "price": 2.5 }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Matcha Frapp",
+          "size": "M",
+          "temperature": "Cold",
+          "price": 4.5
+        }
+      ]
+    },
+    "payment_method": "E-Wallet",
+    "staff_member": "Bob",
+    "total_price": 7.0,
+    "date": "2024-01-10T16:30:00"
+  },
+  {
+    "id": "ORD016",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Latte", "size": "M", "temperature": "Hot", "price": 4.5 }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Caramel Frapp",
+          "size": "M",
+          "temperature": "Cold",
+          "price": 4.8
+        }
+      ]
+    },
+    "payment_method": "Card",
+    "staff_member": "Jeff",
+    "total_price": 9.3,
+    "date": "2023-12-25T08:45:00"
+  },
+  {
+    "id": "ORD017",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Espresso", "size": "S", "temperature": "Hot", "price": 2.5 }
+      ],
+      "Blended Drinks": []
+    },
+    "payment_method": "Cash",
+    "staff_member": "Bob",
+    "total_price": 2.5,
+    "date": "2023-12-10T11:00:00"
+  },
+  {
+    "id": "ORD018",
+    "items_ordered": {
+      "Coffee Drinks": [
+        {
+          "name": "Flat White",
+          "size": "L",
+          "temperature": "Hot",
+          "price": 5.0
+        }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Normal Frapp",
+          "size": "S",
+          "temperature": "Cold",
+          "price": 4.0
+        }
+      ]
+    },
+    "payment_method": "E-Wallet",
+    "staff_member": "Jeff",
+    "total_price": 9.0,
+    "date": "2023-11-15T12:30:00"
+  },
+  {
+    "id": "ORD019",
+    "items_ordered": {
+      "Coffee Drinks": [
+        {
+          "name": "White Coffee",
+          "size": "M",
+          "temperature": "Hot",
+          "price": 4.5
+        }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Mocha Frapp",
+          "size": "M",
+          "temperature": "Cold",
+          "price": 4.8
+        }
+      ]
+    },
+    "payment_method": "Card",
+    "staff_member": "Bob",
+    "total_price": 9.3,
+    "date": "2023-11-01T13:20:00"
+  },
+  {
+    "id": "ORD020",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Latte", "size": "S", "temperature": "Hot", "price": 4.0 }
+      ],
+      "Blended Drinks": []
+    },
+    "payment_method": "Cash",
+    "staff_member": "Jeff",
+    "total_price": 4.0,
+    "date": "2023-10-20T09:00:00"
+  },
+  {
+    "id": "ORD021",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Americano", "size": "M", "temperature": "Hot", "price": 3.5 }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Choco Chip Frapp",
+          "size": "L",
+          "temperature": "Cold",
+          "price": 5.0
+        }
+      ]
+    },
+    "payment_method": "E-Wallet",
+    "staff_member": "Bob",
+    "total_price": 8.5,
+    "date": "2023-10-05T15:45:00"
+  },
+  {
+    "id": "ORD022",
+    "items_ordered": {
+      "Coffee Drinks": [
+        {
+          "name": "Matcha Latte",
+          "size": "L",
+          "temperature": "Hot",
+          "price": 5.0
+        }
+      ],
+      "Blended Drinks": []
+    },
+    "payment_method": "Card",
+    "staff_member": "Jeff",
+    "total_price": 5.0,
+    "date": "2023-09-25T10:30:00"
+  },
+  {
+    "id": "ORD023",
+    "items_ordered": {
+      "Coffee Drinks": [
+        {
+          "name": "White Coffee",
+          "size": "M",
+          "temperature": "Hot",
+          "price": 4.5
+        }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Choco Chip Frapp",
+          "size": "S",
+          "temperature": "Cold",
+          "price": 4.5
+        }
+      ]
+    },
+    "payment_method": "Cash",
+    "staff_member": "Bob",
+    "total_price": 9.0,
+    "date": "2023-09-10T16:00:00"
+  },
+  {
+    "id": "ORD024",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Latte", "size": "S", "temperature": "Hot", "price": 4.0 }
+      ],
+      "Blended Drinks": []
+    },
+    "payment_method": "E-Wallet",
+    "staff_member": "Jeff",
+    "total_price": 4.0,
+    "date": "2023-08-30T12:00:00"
+  },
+  {
+    "id": "ORD025",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Espresso", "size": "S", "temperature": "Hot", "price": 2.5 }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Caramel Frapp",
+          "size": "L",
+          "temperature": "Cold",
+          "price": 5.0
+        }
+      ]
+    },
+    "payment_method": "Card",
+    "staff_member": "Bob",
+    "total_price": 7.5,
+    "date": "2023-08-15T09:45:00"
+  },
+  {
+    "id": "ORD026",
+    "items_ordered": {
+      "Coffee Drinks": [
+        {
+          "name": "Flat White",
+          "size": "M",
+          "temperature": "Hot",
+          "price": 4.5
+        }
+      ],
+      "Blended Drinks": []
+    },
+    "payment_method": "Cash",
+    "staff_member": "Jeff",
+    "total_price": 4.5,
+    "date": "2023-07-10T14:00:00"
+  },
+  {
+    "id": "ORD027",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Latte", "size": "L", "temperature": "Hot", "price": 5.0 }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Matcha Frapp",
+          "size": "S",
+          "temperature": "Cold",
+          "price": 4.0
+        }
+      ]
+    },
+    "payment_method": "E-Wallet",
+    "staff_member": "Bob",
+    "total_price": 9.0,
+    "date": "2023-07-01T11:30:00"
+  },
+  {
+    "id": "ORD028",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Americano", "size": "M", "temperature": "Hot", "price": 3.5 }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Mocha Frapp",
+          "size": "M",
+          "temperature": "Cold",
+          "price": 4.8
+        }
+      ]
+    },
+    "payment_method": "Card",
+    "staff_member": "Jeff",
+    "total_price": 8.3,
+    "date": "2023-06-20T10:15:00"
+  },
+  {
+    "id": "ORD029",
+    "items_ordered": {
+      "Coffee Drinks": [
+        {
+          "name": "Matcha Latte",
+          "size": "M",
+          "temperature": "Hot",
+          "price": 4.5
+        }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Choco Chip Frapp",
+          "size": "S",
+          "temperature": "Cold",
+          "price": 4.5
+        }
+      ]
+    },
+    "payment_method": "E-Wallet",
+    "staff_member": "Bob",
+    "total_price": 9.0,
+    "date": "2023-06-05T13:30:00"
+  },
+  {
+    "id": "ORD030",
+    "items_ordered": {
+      "Coffee Drinks": [
+        {
+          "name": "White Coffee",
+          "size": "L",
+          "temperature": "Hot",
+          "price": 5.0
+        }
+      ],
+      "Blended Drinks": []
+    },
+    "payment_method": "Cash",
+    "staff_member": "Jeff",
+    "total_price": 5.0,
+    "date": "2023-05-25T09:45:00"
+  },
+  {
+    "id": "ORD031",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Espresso", "size": "S", "temperature": "Hot", "price": 2.5 }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Caramel Frapp",
+          "size": "S",
+          "temperature": "Cold",
+          "price": 4.5
+        }
+      ]
+    },
+    "payment_method": "Card",
+    "staff_member": "Bob",
+    "total_price": 7.0,
+    "date": "2023-05-10T11:00:00"
+  },
+  {
+    "id": "ORD032",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Latte", "size": "S", "temperature": "Hot", "price": 4.0 }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Normal Frapp",
+          "size": "L",
+          "temperature": "Cold",
+          "price": 4.0
+        }
+      ]
+    },
+    "payment_method": "E-Wallet",
+    "staff_member": "Jeff",
+    "total_price": 8.0,
+    "date": "2023-04-30T12:30:00"
+  },
+  {
+    "id": "ORD033",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Americano", "size": "M", "temperature": "Hot", "price": 3.5 }
+      ],
+      "Blended Drinks": []
+    },
+    "payment_method": "Cash",
+    "staff_member": "Bob",
+    "total_price": 3.5,
+    "date": "2023-04-15T14:00:00"
+  },
+  {
+    "id": "ORD034",
+    "items_ordered": {
+      "Coffee Drinks": [
+        {
+          "name": "Matcha Latte",
+          "size": "L",
+          "temperature": "Hot",
+          "price": 5.0
+        }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Matcha Frapp",
+          "size": "M",
+          "temperature": "Cold",
+          "price": 4.5
+        }
+      ]
+    },
+    "payment_method": "Card",
+    "staff_member": "Jeff",
+    "total_price": 9.5,
+    "date": "2023-03-25T10:00:00"
+  },
+  {
+    "id": "ORD035",
+    "items_ordered": {
+      "Coffee Drinks": [
+        {
+          "name": "Flat White",
+          "size": "L",
+          "temperature": "Hot",
+          "price": 5.0
+        }
+      ],
+      "Blended Drinks": []
+    },
+    "payment_method": "E-Wallet",
+    "staff_member": "Bob",
+    "total_price": 5.0,
+    "date": "2023-03-10T16:30:00"
+  },
+  {
+    "id": "ORD036",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Latte", "size": "M", "temperature": "Hot", "price": 4.5 }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Choco Chip Frapp",
+          "size": "L",
+          "temperature": "Cold",
+          "price": 5.0
+        }
+      ]
+    },
+    "payment_method": "Card",
+    "staff_member": "Jeff",
+    "total_price": 9.5,
+    "date": "2023-02-20T13:00:00"
+  },
+  {
+    "id": "ORD037",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Espresso", "size": "S", "temperature": "Hot", "price": 2.5 }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Caramel Frapp",
+          "size": "M",
+          "temperature": "Cold",
+          "price": 4.5
+        }
+      ]
+    },
+    "payment_method": "Cash",
+    "staff_member": "Bob",
+    "total_price": 7.0,
+    "date": "2023-02-05T09:00:00"
+  },
+  {
+    "id": "ORD038",
+    "items_ordered": {
+      "Coffee Drinks": [
+        {
+          "name": "White Coffee",
+          "size": "M",
+          "temperature": "Hot",
+          "price": 4.5
+        }
+      ],
+      "Blended Drinks": []
+    },
+    "payment_method": "E-Wallet",
+    "staff_member": "Jeff",
+    "total_price": 4.5,
+    "date": "2023-01-25T10:30:00"
+  },
+  {
+    "id": "ORD039",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Latte", "size": "L", "temperature": "Hot", "price": 5.0 }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Matcha Frapp",
+          "size": "S",
+          "temperature": "Cold",
+          "price": 4.0
+        }
+      ]
+    },
+    "payment_method": "Card",
+    "staff_member": "Bob",
+    "total_price": 9.0,
+    "date": "2023-01-10T15:00:00"
+  },
+  {
+    "id": "ORD040",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Americano", "size": "M", "temperature": "Hot", "price": 3.5 }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Mocha Frapp",
+          "size": "M",
+          "temperature": "Cold",
+          "price": 4.8
+        }
+      ]
+    },
+    "payment_method": "Cash",
+    "staff_member": "Jeff",
+    "total_price": 8.3,
+    "date": "2022-12-30T16:00:00"
+  },
+  {
+    "id": "ORD041",
+    "items_ordered": {
+      "Coffee Drinks": [
+        {
+          "name": "Matcha Latte",
+          "size": "M",
+          "temperature": "Hot",
+          "price": 4.5
+        }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Choco Chip Frapp",
+          "size": "S",
+          "temperature": "Cold",
+          "price": 4.5
+        }
+      ]
+    },
+    "payment_method": "Card",
+    "staff_member": "Bob",
+    "total_price": 9.0,
+    "date": "2022-12-15T11:00:00"
+  },
+  {
+    "id": "ORD042",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Latte", "size": "S", "temperature": "Hot", "price": 4.0 }
+      ],
+      "Blended Drinks": []
+    },
+    "payment_method": "Cash",
+    "staff_member": "Jeff",
+    "total_price": 4.0,
+    "date": "2022-12-01T13:00:00"
+  },
+  {
+    "id": "ORD043",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Espresso", "size": "S", "temperature": "Hot", "price": 2.5 }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Normal Frapp",
+          "size": "L",
+          "temperature": "Cold",
+          "price": 4.0
+        }
+      ]
+    },
+    "payment_method": "E-Wallet",
+    "staff_member": "Bob",
+    "total_price": 6.5,
+    "date": "2022-11-20T12:30:00"
+  },
+  {
+    "id": "ORD044",
+    "items_ordered": {
+      "Coffee Drinks": [
+        {
+          "name": "Flat White",
+          "size": "L",
+          "temperature": "Hot",
+          "price": 5.0
+        }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Mocha Frapp",
+          "size": "S",
+          "temperature": "Cold",
+          "price": 4.8
+        }
+      ]
+    },
+    "payment_method": "Card",
+    "staff_member": "Jeff",
+    "total_price": 9.8,
+    "date": "2022-11-10T10:00:00"
+  },
+  {
+    "id": "ORD045",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Latte", "size": "M", "temperature": "Hot", "price": 4.5 }
+      ],
+      "Blended Drinks": []
+    },
+    "payment_method": "E-Wallet",
+    "staff_member": "Bob",
+    "total_price": 4.5,
+    "date": "2022-10-25T09:15:00"
+  },
+  {
+    "id": "ORD046",
+    "items_ordered": {
+      "Coffee Drinks": [
+        {
+          "name": "White Coffee",
+          "size": "L",
+          "temperature": "Hot",
+          "price": 5.0
+        }
+      ],
+      "Blended Drinks": []
+    },
+    "payment_method": "Cash",
+    "staff_member": "Jeff",
+    "total_price": 5.0,
+    "date": "2022-10-15T10:30:00"
+  },
+  {
+    "id": "ORD047",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Americano", "size": "S", "temperature": "Hot", "price": 3.0 }
+      ],
+      "Blended Drinks": []
+    },
+    "payment_method": "Card",
+    "staff_member": "Bob",
+    "total_price": 3.0,
+    "date": "2022-10-05T12:00:00"
+  },
+  {
+    "id": "ORD048",
+    "items_ordered": {
+      "Coffee Drinks": [
+        { "name": "Espresso", "size": "S", "temperature": "Hot", "price": 2.5 }
+      ],
+      "Blended Drinks": [
+        {
+          "name": "Choco Chip Frapp",
+          "size": "S",
+          "temperature": "Cold",
+          "price": 4.5
+        }
+      ]
+    },
+    "payment_method": "Cash",
+    "staff_member": "Jeff",
+    "total_price": 7.0,
+    "date": "2022-09-20T14:00:00"
+  },
+  {
+    "id": "ORD049",
+    "items_ordered": {
+      "Coffee Drinks": [
+        {
+          "name": "Flat White",
+          "size": "M",
+          "temperature": "Hot",
+          "price": 4.5
+        }
+      ],
+      "Blended Drinks": []
+    },
+    "payment_method": "Card",
+    "staff_member": "Bob",
+    "total_price": 4.5,
+    "date": "2022-09-10T11:30:00"
+  },
+  {
+    "id": "ORD050",
+    "items_ordered": {
+      "Coffee Drinks": [
+        {
+          "name": "Matcha Latte",
+          "size": "L",
+          "temperature": "Hot",
+          "price": 5.0
+        }
+      ],
+      "Blended Drinks": []
+    },
+    "payment_method": "E-Wallet",
+    "staff_member": "Jeff",
+    "total_price": 5.0,
+    "date": "2022-08-25T10:15:00"
+  }
+]
