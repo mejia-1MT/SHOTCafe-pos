@@ -4,7 +4,7 @@ import HotIcon from '../../assets/fire-stroke-rounded'
 import PlusSign from '../../assets/svg/add-01-stroke-rounded'
 import MinusSign from '../../assets/svg/minus-sign-stroke-rounded'
 
-const Card = ({ image, title, price, addOrder }) => {
+const Card = ({ product, addOrder }) => {
   const [size, setSize] = useState(null) // Initial size can be 'S', 'M', or 'L'
   const [temp, setTemp] = useState(null) // Initial temp can be 'Hot' or 'Cold'
   const [choicesVisible, setChoicesVisible] = useState(false)
@@ -32,15 +32,11 @@ const Card = ({ image, title, price, addOrder }) => {
     setCount((prevCount) => (prevCount > 1 ? prevCount - 1 : 1))
 
   const handleAddToCart = () => {
-    if (size && temp) {
-      addOrder({ image, title, price, size, temp, count })
-      setChoicesVisible(false) // Hide choices after adding to cart
-      setSize(null) // Unselect size
-      setTemp(null) // Unselect temp
-      setCount(1) // Optionally reset count
-    } else {
-      alert('Please select size and temperature before adding to cart.')
-    }
+    addOrder({ ...product, size, temp, count })
+    setChoicesVisible(false) // Hide choices after adding to cart
+    setSize(null) // Unselect size
+    setTemp(null) // Unselect temp
+    setCount(1) // Optionally reset count
   }
 
   useEffect(() => {
@@ -62,17 +58,17 @@ const Card = ({ image, title, price, addOrder }) => {
     >
       {/* Card Content */}
       <div className="flex h-[150px] w-full">
-        <div className="w-[140px]   ">
+        <div className="w-[140px]">
           <img
-            src={image}
-            alt={title}
+            src={`http://localhost:3000/assets/${product.image}`} // Updated image URL
+            alt={product.name}
             className="h-[150px] w-auto object-cover object-center"
           />
         </div>
 
         <div className="flex-1 flex flex-col ml-2 mt-2">
-          <p className="text-lg mb-2">{title}</p>
-          <p className="">₱ {price}</p>
+          <p className="text-lg mb-2">{product.name}</p>
+          <p className="">₱ {product.price}</p>
         </div>
       </div>
 
@@ -83,7 +79,7 @@ const Card = ({ image, title, price, addOrder }) => {
 
       {/* Choices */}
       <div
-        className={`absolute top-0 right-0 h-full bg-primary duration-300  text-tertiary ${
+        className={`absolute top-0 right-0 h-full bg-primary duration-300 text-tertiary ${
           choicesVisible ? 'w-[97%] bg-secondary' : 'w-[3%]'
         }`}
       >
@@ -91,28 +87,28 @@ const Card = ({ image, title, price, addOrder }) => {
           <div className="p-2 h-full w-full flex flex-col justify-evenly">
             <div className="pb-1">
               <div className="flex">
-                {['ice', 'hot'].map((tempOption) => (
+                {['Cold', 'Hot'].map((tempOption) => (
                   <button
                     key={tempOption}
                     onClick={() => toggleSelection(setTemp, temp, tempOption)}
                     className={`card-buttons text-center ${
                       temp === tempOption
-                        ? temp === 'ice'
+                        ? temp === 'Cold'
                           ? 'bg-blue-500 border-blue-500 '
                           : 'bg-red-500 border-red-500 '
-                        : `bg-opaque border-customGray`
+                        : 'bg-opaque border-customGray'
                     }`}
                   >
-                    {tempOption === 'ice' ? (
+                    {tempOption === 'Cold' ? (
                       <IceIcon
                         className={`inline-block ${
-                          temp === 'ice' ? 'text-customWhite' : 'text-blue-500'
+                          temp === 'Cold' ? 'text-customWhite' : 'text-blue-500'
                         }`}
                       />
                     ) : (
                       <HotIcon
                         className={`inline-block ${
-                          temp === 'hot' ? 'text-customWhite' : 'text-red-500'
+                          temp === 'Hot' ? 'text-customWhite' : 'text-red-500'
                         }`}
                       />
                     )}
@@ -125,7 +121,11 @@ const Card = ({ image, title, price, addOrder }) => {
                 <button
                   key={s}
                   onClick={() => toggleSelection(setSize, size, s)}
-                  className={`${size === s ? 'border-primary text-customWhite bg-primary' : 'text-customGray border-customGray'} card-buttons`}
+                  className={`${
+                    size === s
+                      ? 'border-primary text-customWhite bg-primary'
+                      : 'text-customGray border-customGray'
+                  } card-buttons`}
                 >
                   {s}
                 </button>

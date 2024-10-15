@@ -7,6 +7,7 @@ export default {
     extend: {
       fontFamily: {
         quicksand: ['Quicksand', 'sans-serif'],
+        custom: ['Quicksand', 'sans-serif'],
         dela: ['Dela Gothic One', 'sans-serif'],
       },
       fontWeight: {

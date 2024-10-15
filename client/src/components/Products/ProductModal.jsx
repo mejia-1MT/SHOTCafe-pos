@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from 'react'
 import CustomDropdown from './CustomDropdown'
 import Modal from './Modal'
-import ConfirmationModal from './ConfirmationModal'
+// import ConfirmationModal from './ConfirmationModal'
 
 const ProductModal = ({
   isVisible,
   onClose,
   initialProduct,
-  onAddProduct,
+  addProduct,
+  updateProduct,
   actionType,
 }) => {
   const [newProduct, setNewProduct] = useState(initialProduct)
-  const [focus, setFocus] = useState({
-    title: false,
-    price: false,
-  })
-  const [isConfirmationVisible, setIsConfirmationVisible] = useState(false)
+  const [focus, setFocus] = useState({ name: false, price: false })
 
-  // Reset newProduct state whenever initialProduct or modal visibility changes
+  const formattedImageUrl = newProduct.image.startsWith('data:')
+    ? newProduct.image
+    : newProduct.image.startsWith('http')
+      ? newProduct.image
+      : `http://localhost:3000/assets/${newProduct.image}`
+
   useEffect(() => {
     if (isVisible) {
       setNewProduct(initialProduct)
@@ -36,18 +38,12 @@ const ProductModal = ({
       }
       reader.readAsDataURL(files[0])
     } else {
-      if (name === 'price') {
-        const numericValue = value.replace(/[^0-9.]/g, '')
-        setNewProduct((prevProduct) => ({
-          ...prevProduct,
-          [name]: numericValue,
-        }))
-      } else {
-        setNewProduct((prevProduct) => ({
-          ...prevProduct,
-          [name]: value,
-        }))
-      }
+      const updatedValue =
+        name === 'price' ? value.replace(/[^0-9.]/g, '') : value
+      setNewProduct((prevProduct) => ({
+        ...prevProduct,
+        [name]: updatedValue,
+      }))
     }
   }
 
@@ -63,27 +59,34 @@ const ProductModal = ({
     setNewProduct((prevProduct) => ({ ...prevProduct, category }))
   }
 
-  const handleAddOrUpdateProduct = () => {
-    setIsConfirmationVisible(true) // Show confirmation modal before proceeding
+  const confirm = () => {
+    if (actionType === 'add') {
+      addProduct(newProduct)
+    } else if (actionType === 'update') {
+      updateProduct(newProduct)
+    }
   }
 
-  const handleConfirmAction = () => {
-    if (actionType === 'add') {
-      onAddProduct(newProduct)
-    } else {
-      console.log('Product updated:', newProduct)
-    }
-    setIsConfirmationVisible(false)
-    onClose() // Close the modal after confirming the action
-  }
+  // const handleConfirmAction = async () => {
+  //   try {
+  //     if (actionType === 'add') {
+  //       await onAddProduct(newProduct)
+  //     } else {
+  //       console.log('Product updated:', newProduct)
+  //     }
+  //   } catch (error) {
+  //     console.error('Error:', error)
+  //   } finally {
+  //     setIsConfirmationVisible(false)
+  //     onClose()
+  //   }
+  // }
 
   return (
     <>
       <Modal isVisible={isVisible} onClose={onClose}>
         <div className="m-5">
-          {/* Product input fields */}
           <div className="flex space-x-4">
-            {/* Image input */}
             <div>
               <input
                 id="fileInput"
@@ -99,7 +102,7 @@ const ProductModal = ({
               >
                 {newProduct.image ? (
                   <img
-                    src={newProduct.image}
+                    src={formattedImageUrl}
                     alt="Selected"
                     className="object-cover h-full"
                   />
@@ -113,35 +116,33 @@ const ProductModal = ({
               </label>
             </div>
 
-            {/* Text input fields */}
             <div className="relative">
               <div className="relative mb-3">
                 <input
                   type="text"
-                  name="title"
-                  value={newProduct.title}
+                  name="name"
+                  value={newProduct.name}
                   onChange={handleInputChange}
-                  onFocus={() => handleFocus('title')}
-                  onBlur={() => handleBlur('title')}
+                  onFocus={() => handleFocus('name')}
+                  onBlur={() => handleBlur('name')}
                   placeholder=" "
-                  className={`peer block w-full p-2 pl-3 border border-gray-300 rounded-lg focus:outline-none`}
+                  className="peer block w-full p-2 pl-3 border border-gray-300 rounded-lg focus:outline-none"
                 />
                 <label
-                  htmlFor="title"
+                  htmlFor="name"
                   className={`absolute transform transition-all duration-300 ${
-                    newProduct.title || focus.title
+                    newProduct.name || focus.name
                       ? 'text-primary text-xs -top-2 bg-white px-1 left-3'
-                      : 'text-gray-500 text-base top-1/2 -translate-y-1/2 left-3 '
+                      : 'text-gray-500 text-base top-1/2 -translate-y-1/2 left-3'
                   }`}
                 >
-                  Title
+                  Name
                 </label>
               </div>
 
-              {/* Price input field */}
               <div className="relative mb-3">
                 <span
-                  className={`absolute left-3 top-1/2 transfom -translate-y-1/2 ${
+                  className={`absolute left-3 top-1/2 transform -translate-y-1/2 ${
                     newProduct.price || focus.price
                       ? 'text-black'
                       : 'text-gray-500'
@@ -157,7 +158,7 @@ const ProductModal = ({
                   onFocus={() => handleFocus('price')}
                   onBlur={() => handleBlur('price')}
                   placeholder=" "
-                  className={`peer pl-7 block w-full p-2 border border-gray-300 rounded-lg focus:outline-none`}
+                  className="peer pl-7 block w-full p-2 border border-gray-300 rounded-lg focus:outline-none"
                 />
                 <label
                   htmlFor="price"
@@ -171,7 +172,6 @@ const ProductModal = ({
                 </label>
               </div>
 
-              {/* Category dropdown */}
               <CustomDropdown
                 selectedCategory={newProduct.category}
                 setCategory={handleCategoryChange}
@@ -180,7 +180,6 @@ const ProductModal = ({
           </div>
         </div>
 
-        {/* Modal buttons */}
         <div className="flex justify-end text-sm mr-5">
           <button
             onClick={onClose}
@@ -189,16 +188,16 @@ const ProductModal = ({
             Cancel
           </button>
           <button
-            onClick={handleAddOrUpdateProduct}
+            onClick={confirm}
             disabled={
               !newProduct.image ||
-              !newProduct.title ||
+              !newProduct.name ||
               !newProduct.price ||
               !newProduct.category
             }
             className={`px-4 py-2 custom-outline outline-opaque rounded transition-colors ${
               !newProduct.image ||
-              !newProduct.title ||
+              !newProduct.name ||
               !newProduct.price ||
               !newProduct.category
                 ? 'bg-opaque'
@@ -209,14 +208,13 @@ const ProductModal = ({
           </button>
         </div>
       </Modal>
-
-      {/* Confirmation modal */}
+      {/* 
       <ConfirmationModal
         isVisible={isConfirmationVisible}
         onClose={() => setIsConfirmationVisible(false)}
         onConfirm={handleConfirmAction}
         actionType={actionType}
-      />
+      /> */}
     </>
   )
 }

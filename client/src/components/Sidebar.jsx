@@ -1,4 +1,5 @@
-import { useLocation, NavLink } from 'react-router-dom'
+import { useLocation, NavLink, useNavigate } from 'react-router-dom'
+import axios from 'axios'
 import Profile from './Profile.jsx'
 import Logo from './Logo.jsx'
 import IconLabels from './mNavElements.jsx'
@@ -14,7 +15,21 @@ import LogoutIcon from '../assets/logout-03-stroke-rounded.jsx'
 
 export default function Sidebar() {
   const location = useLocation()
+  const navigate = useNavigate()
   const currentPath = location.pathname
+
+  const handleLogout = async () => {
+    try {
+      // Optionally, you can make an API call to the logout endpoint
+      await axios.post('http://localhost:3000/auth/logout') // This won't have any effect in JWT but can be used for logging purposes
+    } catch (error) {
+      console.error('Logout error:', error)
+    } finally {
+      // Remove the token from local storage
+      localStorage.removeItem('token') // Or wherever you store your JWT
+      navigate('/signin') // Redirect to sign-in page
+    }
+  }
 
   const navItems = [
     { path: '/', Icon: HomeIcon, label: 'Home' },
@@ -61,7 +76,7 @@ export default function Sidebar() {
             Image={navItems[navItems.length - 1].Icon}
             Label={navItems[navItems.length - 1].label}
             isActive={currentPath === navItems[navItems.length - 1].path}
-            onClick={() => {}}
+            onClick={handleLogout}
           />
         </div>
       </div>

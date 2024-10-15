@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Coffee",
+    "price": "80",
+    "category": "Coffee"
+  },
+  {
+    "name": "Americano",
+    "price": "85",
+    "category": "Coffee"
+  },
+  {
+    "name": "Espresso",
+    "price": "70",
+    "category": "Coffee"
+  },
+  {
+    "name": "Flat White",
+    "price": "90",
+    "category": "Coffee"
+  },
+  {
+    "name": "Latte",
+    "price": "85",
+    "category": "Coffee"
+  },
+  {
+    "name": "White Coffee",
+    "price": "90",
+    "category": "Coffee"
+  },
+  {
+    "name": "Matcha Latte",
+    "price": "95",
+    "category": "Coffee"
+  },
+  {
+    "name": "Frappuccino",
+    "price": "100",
+    "category": "Blended"
+  },
+  {
+    "name": "Mocha Frappuccino",
+    "price": "105",
+    "category": "Blended"
+  },
+  {
+    "name": "Caramel Frappuccino",
+    "price": "105",
+    "category": "Blended"
+  },
+  {
+    "name": "Choco Chip Frappuccino",
+    "price": "110",
+    "category": "Blended"
+  },
+  {
+    "name": "Matcha Frappuccino",
+    "price": "105",
+    "category": "Blended"
+  }
+]

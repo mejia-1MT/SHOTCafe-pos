@@ -1,0 +1,65 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+// const formatDate = (date) => {
+//   const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+//   return new Date(date).toLocaleDateString('en-US', options);
+// };
+
+// const exampleDate = "2024-09-16T11:20:38.283Z";
+// console.log(formatDate(exampleDate)); // Outputs: Sep 16, 2024, 11:20 AM
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  BASIC
+}
+
+model User {
+  id            String          @id @default(uuid())
+  username      String          @unique
+  password      String
+  role          Role            @default(BASIC)
+  ordersSummary OrdersSummary[]
+}
+
+model Product {
+  id       String  @id @default(uuid())
+  name     String  @unique
+  price    Float   @default(0.0)
+  category String
+  image    String
+  order    Order[] //??
+}
+
+model OrdersSummary {
+  id            String   @id @default(uuid())
+  paymentMethod String
+  user          User     @relation(fields: [userId], references: [id])
+  userId        String
+  totalPrice    Float
+  createdAt     DateTime @default(now())
+  orders        Order[]
+}
+
+model Order {
+  id              String        @id @default(uuid())
+  ordersSummary   OrdersSummary @relation(fields: [ordersSummaryId], references: [id])
+  ordersSummaryId String
+  product         Product       @relation(fields: [productId], references: [id])
+  productId       String
+  size            String
+  temperature     String
+  moddedPrice     Float
+}

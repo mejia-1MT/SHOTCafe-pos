@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { Bar } from 'react-chartjs-2'
 import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
   BarElement,
-  Title,
   Tooltip,
 } from 'chart.js'
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip)
+ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip)
 
 const colors = {
   primary: '#02342d',
@@ -20,56 +20,57 @@ const colors = {
   opaque: '#668c85',
 }
 
-// Helper function to get the last 7 months and aggregate sales
-const getMonthlySales = (orders) => {
-  const now = new Date()
-  const months = []
-  const sales = []
-
-  for (let i = 6; i >= 0; i--) {
-    const monthDate = new Date(now.getFullYear(), now.getMonth() - i, 1)
-    const monthName = monthDate.toLocaleString('default', { month: 'long' })
-    months.push(monthName)
-
-    const monthSales = orders
-      .filter(order => {
-        const orderDate = new Date(order.date)
-        return (
-          orderDate.getFullYear() === monthDate.getFullYear() &&
-          orderDate.getMonth() === monthDate.getMonth()
-        )
-      })
-      .reduce((acc, order) => acc + order.total_price, 0)
-
-    sales.push(monthSales)
-  }
-
-  return { months, sales }
-}
-
 const ProfitBarChart = () => {
-  const [data, setData] = useState({ labels: [], datasets: [] })
+  const [sales, setSales] = useState([])
+  const [error, setError] = useState(null)
 
   useEffect(() => {
-    fetch('/orders.json')
-      .then(response => response.json())
-      .then(orders => {
-        const { months, sales } = getMonthlySales(orders)
-        setData({
-          labels: months,
-          datasets: [
-            {
-              label: 'Total Sales',
-              data: sales,
-              backgroundColor: colors.opaque,
-              hoverBackgroundColor: colors.primary,
-              barThickness: 50,
-            },
-          ],
-        })
-      })
-      .catch(error => console.error('Error fetching orders:', error))
+    const fetchSales = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/sales/bar`) // Ensure this URL matches your API endpoint
+        setSales(response.data)
+      } catch (error) {
+        setError(error.message || 'Failed to fetch sales')
+      }
+    }
+
+    fetchSales()
   }, [])
+
+  const labels = Object.keys(sales)
+  const dataset = Object.values(sales)
+  const monthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ]
+
+  // Convert labels from "2024-1" to "January"
+  const monthLabels = labels.map((label) => {
+    const [year, month] = label.split('-')
+    const monthIndex = parseInt(month, 10) - 1 // Adjust index (0-based)
+    return monthNames[monthIndex]
+  })
+
+  const data = {
+    labels: monthLabels,
+    datasets: [
+      {
+        label: 'Data',
+        data: dataset,
+        backgroundColor: colors.primary,
+      },
+    ],
+  }
 
   const options = {
     responsive: true,
@@ -156,7 +157,7 @@ const ProfitBarChart = () => {
   }
 
   return (
-    <div className="h-[85%]">
+    <div className="h-[85%] w-full">
       <Bar data={data} options={options} />
     </div>
   )

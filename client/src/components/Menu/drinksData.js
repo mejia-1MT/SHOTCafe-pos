@@ -15,43 +15,43 @@ import matchaFrappImage from '../../assets/menu/matcha frapp.jpg'
 const drinksData = [
   // Coffee Drinks
   {
-    title: 'Coffee',
+    name: 'Coffee',
     price: '2.50',
     image: coffeeImage,
     category: 'Coffee',
   },
   {
-    title: 'Americano',
+    name: 'Americano',
     price: '2.75',
     image: americanoImage,
     category: 'Coffee',
   },
   {
-    title: 'Espresso',
+    name: 'Espresso',
     price: '2.00',
     image: espressoImage,
     category: 'Coffee',
   },
   {
-    title: 'Flat White',
+    name: 'Flat White',
     price: '3.50',
     image: flatWhiteImage,
     category: 'Coffee',
   },
   {
-    title: 'Latte',
+    name: 'Latte',
     price: '3.75',
     image: latteImage,
     category: 'Coffee',
   },
   {
-    title: 'White Coffee',
+    name: 'White Coffee',
     price: '3.25',
     image: whiteImage,
     category: 'Coffee',
   },
   {
-    title: 'Matcha Latte',
+    name: 'Matcha Latte',
     price: '4.00',
     image: matchaImage,
     category: 'Coffee',
@@ -59,31 +59,31 @@ const drinksData = [
 
   // Blended
   {
-    title: 'Frappuccino',
+    name: 'Frappuccino',
     price: '4.50',
     image: frapImage,
     category: 'Blended',
   },
   {
-    title: 'Mocha Frappuccino',
+    name: 'Mocha Frappuccino',
     price: '4.75',
     image: mochaFrappImage,
     category: 'Blended',
   },
   {
-    title: 'Caramel Frappuccino',
+    name: 'Caramel Frappuccino',
     price: '4.75',
     image: caramelFrappImage,
     category: 'Blended',
   },
   {
-    title: 'Choco Chip Frappuccino',
+    name: 'Choco Chip Frappuccino',
     price: '5.00',
     image: chocoChipImage,
     category: 'Blended',
   },
   {
-    title: 'Matcha Frappuccino',
+    name: 'Matcha Frappuccino',
     price: '5.00',
     image: matchaFrappImage,
     category: 'Blended',

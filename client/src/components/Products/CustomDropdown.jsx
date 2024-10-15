@@ -52,7 +52,7 @@ const CustomDropdown = ({ setCategory, selectedCategory }) => {
         <span
           className={`absolute top-0 transition-all duration-300 transform ${
             selectedOption || isFocused
-              ? 'text-primary text-xs -top-[0.5rem] bg-white px-1 left-3'
+              ? 'text-primary text-xs -top-[1vh] bg-white px-1 left-3'
               : 'text-gray-500 text-base top-1/2 -translate-y-1/2'
           }`}
         >

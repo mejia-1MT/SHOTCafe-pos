@@ -6,7 +6,6 @@ import {
   LinearScale,
   LineElement,
   PointElement,
-  Title,
   Tooltip,
   Filler, // Import Filler for the area fill
 } from 'chart.js'
@@ -17,18 +16,18 @@ ChartJS.register(
   LinearScale,
   LineElement,
   PointElement,
-  Title,
+
   Tooltip,
   Filler
 )
 
-const HighlightCharts = ({ primaryColor, secondaryColor, dataset }) => {
+const HighlightCharts = ({ primaryColor, secondaryColor, labels, dataset }) => {
   const data = {
-    labels: dataset.labels,
+    labels: labels,
     datasets: [
       {
-        label: dataset.datasets[0].label,
-        data: dataset.datasets[0].data,
+        label: 'fun',
+        data: dataset,
         backgroundColor: (context) => {
           if (!context.chart.chartArea) {
             return

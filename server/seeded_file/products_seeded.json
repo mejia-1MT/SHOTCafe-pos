@@ -1,0 +1,86 @@
+[
+  {
+    "id": "2ab461ce-5ed1-4ff7-b0f3-dd83641c7df0",
+    "name": "Coffee",
+    "price": 80,
+    "category": "Coffee",
+    "image": "../assets/menu/Coffee.jpg"
+  },
+  {
+    "id": "29a13655-88b5-4c5e-86fb-13ecf147a6d5",
+    "name": "Americano",
+    "price": 85,
+    "category": "Coffee",
+    "image": "../assets/menu/Americano.jpg"
+  },
+  {
+    "id": "0ce7e264-aead-4b7f-bf68-db6df8e35f19",
+    "name": "Espresso",
+    "price": 70,
+    "category": "Coffee",
+    "image": "../assets/menu/Espresso.jpg"
+  },
+  {
+    "id": "532cc0ba-209b-4f36-875e-e7fe397572b5",
+    "name": "Flat White",
+    "price": 90,
+    "category": "Coffee",
+    "image": "../assets/menu/FlatWhite.jpg"
+  },
+  {
+    "id": "6aef0141-1339-4296-b69b-674dfd8e00c4",
+    "name": "Latte",
+    "price": 85,
+    "category": "Coffee",
+    "image": "../assets/menu/Latte.jpg"
+  },
+  {
+    "id": "9e0e3b9f-23e2-4a1a-a379-b029bbbdd823",
+    "name": "White Coffee",
+    "price": 90,
+    "category": "Coffee",
+    "image": "../assets/menu/WhiteCoffee.jpg"
+  },
+  {
+    "id": "170a7c4b-8766-4b9e-ba65-c9f4f15f1345",
+    "name": "Matcha Latte",
+    "price": 95,
+    "category": "Coffee",
+    "image": "../assets/menu/MatchaLatte.jpg"
+  },
+  {
+    "id": "9207224c-a112-4758-946f-e8ccc68a2a8c",
+    "name": "Frappuccino",
+    "price": 100,
+    "category": "Blended",
+    "image": "../assets/menu/Frappuccino.jpg"
+  },
+  {
+    "id": "be7c361e-9d19-4b81-9893-9835241344a1",
+    "name": "Mocha Frappuccino",
+    "price": 105,
+    "category": "Blended",
+    "image": "../assets/menu/MochaFrappuccino.jpg"
+  },
+  {
+    "id": "fa9038f8-b2da-4a48-a235-ad21ca61e843",
+    "name": "Caramel Frappuccino",
+    "price": 105,
+    "category": "Blended",
+    "image": "../assets/menu/CaramelFrappuccino.jpg"
+  },
+  {
+    "id": "1dc93ab6-265c-4c1f-af7e-bdebf32c9050",
+    "name": "Choco Chip Frappuccino",
+    "price": 110,
+    "category": "Blended",
+    "image": "../assets/menu/ChocoChipFrappuccino.jpg"
+  },
+  {
+    "id": "6492ab76-5341-4bc1-9af7-3667d4aa7806",
+    "name": "Matcha Frappuccino",
+    "price": 105,
+    "category": "Blended",
+    "image": "../assets/menu/MatchaFrappuccino.jpg"
+  }
+]

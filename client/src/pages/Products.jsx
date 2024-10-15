@@ -1,31 +1,64 @@
-import React, { useState } from 'react'
-import drinksData from '../components/Menu/drinksData'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import ProductsCard from '../components/Products/ProductsCard'
 import ProductModal from '../components/Products/ProductModal'
 import Search from '../assets/search-01-stroke-rounded.jsx'
 
 function Products() {
+  const [actionType, setActionType] = useState('')
   const [query, setQuery] = useState('')
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [actionType, setActionType] = useState('add') // Track whether adding or updating
   const [initialProduct, setInitialProduct] = useState({
     image: '',
-    title: '',
+    name: '',
     price: '',
     category: '',
   })
+  const [products, setProducts] = useState([]) // State for products
+  const [error, setError] = useState(null) // State for error handling
+  const [loading, setLoading] = useState(true) // State for loading
 
-  const handleNewButtonClick = () => {
-    setInitialProduct({ image: '', title: '', price: '', category: '' })
+  // Fetch products from the API
+  const fetchProducts = async () => {
+    setLoading(true)
+    try {
+      const response = await axios.get('http://localhost:3000/products')
+      setProducts(response.data)
+    } catch (error) {
+      setError(error.message || 'Failed to fetch products')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchProducts()
+  }, [])
+
+  const handleAddProduct = () => {
+    setInitialProduct({ image: '', name: '', price: '', category: '' })
     setActionType('add')
     setIsModalOpen(true)
   }
 
-  const handleAddProduct = (product) => {
-    console.log('Product added/updated:', product)
-    setInitialProduct({ image: '', title: '', price: '', category: '' })
+  const addProduct = async (product) => {
+    console.log('Product to be added: ', product)
+    setInitialProduct({ image: '', name: '', price: '', category: '' })
     setIsModalOpen(false)
-    // Add product to your drinksData or handle update logic here
+
+    try {
+      const response = await axios.post(
+        'http://localhost:3000/products/create',
+        product
+      )
+      console.log('Respose: ', response)
+      await fetchProducts()
+    } catch (error) {
+      console.error(
+        'Error placing order:',
+        error.response ? error.response.data : error.message
+      )
+    }
   }
 
   const handleEditProduct = (product) => {
@@ -34,23 +67,56 @@ function Products() {
     setIsModalOpen(true)
   }
 
-  const handleDeleteProduct = (productName) => {
+  const updateProduct = async (product) => {
+    console.log('Product to be edited: ', product)
+    setInitialProduct({ image: '', name: '', price: '', category: '' })
+    setIsModalOpen(false)
+
+    try {
+      const response = await axios.put(
+        `http://localhost:3000/products/update/${product.id}`,
+        product
+      )
+      console.log('Response: ', response.data)
+      await fetchProducts() // Optionally handle the response, e.g., update the UI
+    } catch (error) {
+      console.error(
+        'Error updating product:',
+        error.response ? error.response.data : error.message
+      )
+    }
+  }
+
+  const handleDeleteProduct = async (product) => {
     // Handle delete logic here, like updating state or calling an API
-    console.log('Product deleted with name:', productName)
+    console.log(`Deleted: \n Product: ${product.name} \n id: ${product.id}`)
+
+    try {
+      const response = await axios.delete(
+        `http://localhost:3000/products/delete/${product.id}`
+      )
+      console.log('Response: ', response.data)
+      await fetchProducts() // Optionally handle the response, e.g., update the UI
+    } catch (error) {
+      console.error(
+        'Error deleting product:',
+        error.response ? error.response.data : error.message
+      )
+    }
   }
 
   const handleCancel = () => {
-    setInitialProduct({ image: '', title: '', price: '', category: '' })
+    setInitialProduct({ image: '', name: '', price: '', category: '' })
     setIsModalOpen(false)
     console.log('Modal closed and product reset')
   }
 
   return (
-    <div className="h-screen flex-1 overflow-y-auto scrollbar-hide">
-      <div className="mx-10 py-5 flex">
+    <div className="h-screen flex-1 overflow-y-auto scrollbar-hide px-10">
+      <div className="py-5 flex">
         <div className="rounded-lg py-3 px-5 mr-5 w-auto bg-[#02342d89]">
           <button
-            onClick={handleNewButtonClick}
+            onClick={handleAddProduct}
             className="text-customWhite font-semibold"
           >
             New +
@@ -61,7 +127,7 @@ function Products() {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="w-full h-full px-5 py-3 bg-secondary-2 rounded-lg  text-gray-700 focus:outline-none"
+            className="w-full h-full px-5 py-3 bg-secondary-2 rounded-lg text-gray-700 focus:outline-none"
             placeholder="Search..."
           />
           <button
@@ -73,25 +139,32 @@ function Products() {
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-10 mx-10 mb-5">
-        {drinksData.map((drink, index) => (
-          <ProductsCard
-            key={index}
-            image={drink.image}
-            title={drink.title}
-            price={drink.price}
-            category={drink.category}
-            onEdit={() => handleEditProduct(drink)}
-            onDelete={() => handleDeleteProduct(drink.title)}
-          />
-        ))}
+      {/* Display loading and error messages */}
+      {loading && <p>Loading products...</p>}
+      {error && <p className="text-red-500">{error}</p>}
+
+      {/* Display products */}
+      <div className="w-full grid grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))] gap-5 mb-5">
+        {products
+          .filter((product) =>
+            product.name.toLowerCase().includes(query.toLowerCase())
+          )
+          .map((product, index) => (
+            <ProductsCard
+              key={index}
+              product={product}
+              onEdit={() => handleEditProduct(product)}
+              onDelete={() => handleDeleteProduct(product)}
+            />
+          ))}
       </div>
 
       <ProductModal
         isVisible={isModalOpen}
         onClose={() => handleCancel()}
         initialProduct={initialProduct}
-        onAddProduct={handleAddProduct}
+        addProduct={addProduct} // Pass whether adding or updating
+        updateProduct={updateProduct}
         actionType={actionType} // Pass whether adding or updating
       />
     </div>

@@ -1,9 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 import testing from '../../../11415021.png'
 import Slider from '../components/Home/Slider'
 import Coffee from '../assets/coffee-02-stroke-rounded'
 
 function Home() {
+  const [products, setProducts] = useState([])
+  const [error, setError] = useState(null)
+
   const items = {
     coffee: 'Coffee',
     americano: 'Americano',
@@ -12,6 +16,22 @@ function Home() {
     matcha: 'Matcha',
     frappuccino: 'Frappuccino',
   }
+
+  useEffect(() => {
+    const fetchPopular = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/orders/top') // Ensure this URL matches your API endpoint
+        setProducts(response.data)
+        console.log(P)
+      } catch (error) {
+        setError(error.message || 'Failed to fetch products')
+      }
+    }
+
+    fetchPopular()
+  }, [])
+
+  console.log(products)
 
   return (
     <div className="relative h-screen flex-1 overflow-hidden">
@@ -38,15 +58,18 @@ function Home() {
               Here's what other people are trying
             </p>
             <div className="w-[90%] flex justify-evenly">
-              <div className="w-[70px] aspect-square bg-primary rounded-full">
-                <img src="" alt="Item 1" />
-              </div>
-              <div className="w-[70px] aspect-square bg-primary rounded-full">
-                <img src="" alt="Item 2" />
-              </div>
-              <div className="w-[70px] aspect-square bg-primary rounded-full">
-                <img src="" alt="Item 3" />
-              </div>
+              {products.map((product, index) => (
+                <div
+                  key={index}
+                  className="w-[70px] aspect-square rounded-full transition-transform duration-300 transform hover:scale-110"
+                >
+                  <img
+                    src={`http://localhost:3000/assets/${product.productDetails.image}`}
+                    alt={`${product.productDetails.name}`}
+                    className="object-cover w-full h-full rounded-full"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>

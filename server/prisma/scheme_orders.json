@@ -1,0 +1,16 @@
+{
+  "paymentMethod": "Cash",
+  "totalPrice": 330,
+  "orders": [
+    {
+      "size": "S",
+      "temperature": "Hot",
+      "moddedPrice": 90
+    },
+    {
+      "size": "L",
+      "temperature": "Cold",
+      "moddedPrice": 135
+    }
+  ]
+}

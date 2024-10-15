@@ -1,6 +1,5 @@
 import React from 'react'
 import Modal from './Modal'
-
 import UpdateIcon from '../../assets/svg/edit-01-stroke-rounded'
 import DeleteIcon from '../../assets/svg/delete-02-stroke-rounded'
 import AddIcon from '../../assets/svg/add-01-stroke-rounded'
@@ -15,7 +14,7 @@ const ConfirmationModal = ({ isVisible, onClose, onConfirm, actionType }) => {
       case 'add':
         return 'Are you sure you want to add this product?'
       default:
-        return 'action not accepted'
+        return 'Action not accepted'
     }
   }
 
@@ -35,7 +34,7 @@ const ConfirmationModal = ({ isVisible, onClose, onConfirm, actionType }) => {
   return (
     <Modal isVisible={isVisible} onClose={onClose}>
       <div>
-        <div className="flex  ">
+        <div className="flex">
           <div className="mr-2">
             {actionType === 'delete' ? (
               <DeleteIcon className="text-" />
@@ -67,15 +66,9 @@ const ConfirmationModal = ({ isVisible, onClose, onConfirm, actionType }) => {
           </button>
           <button
             onClick={onConfirm}
-            className={`border px-4 py-2 rounded ${getButtonStyles()}`}
+            className={`text-sm px-4 py-2 rounded transition-colors ${getButtonStyles()}`}
           >
-            {actionType === 'delete'
-              ? 'Delete'
-              : actionType === 'update'
-                ? 'Update'
-                : actionType === 'add'
-                  ? 'add'
-                  : 'Confirm'}
+            Confirm
           </button>
         </div>
       </div>
